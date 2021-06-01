@@ -7,14 +7,14 @@ class ProductPage(BasePage):
         add_button = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET)
         add_button.click()
 
-    def shold_be_right_product_name_in_message(self):
-        product_name = self.browser.find_element\
+    def should_be_right_product_name_in_message(self):
+        product_name = self.browser.find_element \
         (*ProductPageLocators.PRODUCT_NAME).text
-        product_name_in_message = self.browser.find_element\
+        product_name_in_message = self.browser.find_element \
         (*ProductPageLocators.PRODUCT_NAME_IN_MESSAGE).text
         assert product_name == product_name_in_message, "Wrong product in message"
 
-    def shold_be_right_product_price_in_message(self):
+    def should_be_right_product_price_in_message(self):
         product_price = self.browser.find_element\
         (*ProductPageLocators.PRODUCT_PRICE).text
         product_price_in_message = self.browser.find_element\
@@ -24,3 +24,7 @@ class ProductPage(BasePage):
     def should_not_be_success_message(self):
         assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
             "Success message is presented, but should not be"
+
+    def should_dessappeared_message(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Succes message is not disappeared"
